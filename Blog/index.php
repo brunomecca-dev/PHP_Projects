@@ -1,17 +1,31 @@
 <?php
-include_once('helpers/url.php');
-
+include_once("templates/header.php");
 ?>
+    <main>
+        <div id="title-container">
+            <h1>Blog Bruno</h1>
+            <p>Um blog sobre programação</p>
+        </div>
+        <div id="posts-container">
+            <h2>Últimos Posts</h2>
+            <div id="posts-container">
+                <?php foreach($posts as $post): ?>
+                    <div class="post-box">
+                        <img src="<?= $BASE_URL ?>/img/<?= $post['img']?>" alt="<?= $post['title']?>">
+                        <h2 class="post-title">
+                           <a href="<?= $BASE_URL ?>post.php?id=<?= $post['id']?>"><?= $post['title'] ?></a> 
+                        </h2>
+                        <p class="post-description"><?= $post['description'] ?></p>
+                        <div class="tags-container">
+                            <?php foreach($post['tags'] as $tag): ?>
+                                <a href="#" class="tag"><?= $tag ?></a>
+                            <?php endforeach; ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Codar</title>
-    <link rel="stylesheet" href="<?= $BASE_URL ?>/css/styles.css">
-</head>
-<body>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
     
-</body>
-</html>
+<?php
+    include_once("templates/footer.php");
+?>
