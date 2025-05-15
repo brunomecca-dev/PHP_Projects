@@ -27,7 +27,7 @@ include_once("data/categories.php");
                 <li><a href="<?= $BASE_URL ?>"class="nav-link">Home</a></li>
                 <li><a href="#"class="nav-link">Categorias</a></li>
                 <li><a href="#"class="nav-link">Sobre</a></li>
-                <li><a href="<?= $BASE_URL ?>templates/contato.php"class="nav-link">Contato</a></li>
+                <li><a href="<?= $BASE_URL ?>contato.php"class="nav-link">Contato</a></li>
             </ul>
         </nav>
     </headder>
