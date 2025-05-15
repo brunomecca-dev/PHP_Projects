@@ -1,5 +1,6 @@
 <footer>
-    <p>Bruno Mecca &copy; 2025</p>
+  <p>Hora de Codar &copy; 2020</p>
 </footer>
 </body>
+
 </html>
