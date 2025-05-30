@@ -1,8 +1,41 @@
     <?php
     include_once("templates/header.php");
     ?>
-    <h1>TESTANDO</h1>
-    <i class="fas fa-eye"></i>
+    <div class="container">
+        <?php if (isset($printMsg) && $printMsg != ''): ?>
+            <p id="msg"><?= $printMsg ?></p>
+        <?php endif; ?>
+        <h1 id="main-tile">MINHA AGENDA DE CONTATOS</h1>
+        <?php if (count($contacts) > 0): ?>
+            <table class="table" id="contacts-table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">NOME</th>
+                        <th scope="col">TELEFONE</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($contacts as $contact): ?>
+                        <tr>
+                            <td scope="row"><?= $contact['id'] ?></td>
+                            <td><?= $contact['name'] ?></td>
+                            <td><?= $contact['phone'] ?></td>
+                            <td class="actions">
+                                <a href="#"><i class="fas fa-eye check-icon"></i></a>
+                                <a href="#"><i class="far fa-edit edit-icon"></i></a>
+                                <button type="submit"><i class="fas fa-times delete-icon"></i></button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <p> TEM CONTATOS</p>
+        <?php else: ?>
+            <p id="empty-list-text">Ainda não há contatos cadastrados!,<a href="<?= $BASE_URL ?>create.php">CLIQUE AQUI PARA ADICIONAR</a>.</p>
+        <?php endif; ?>
+    </div>
     <?php
     include_once("templates/footer.php");
     ?>
