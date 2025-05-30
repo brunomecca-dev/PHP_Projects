@@ -19,19 +19,18 @@
                 <tbody>
                     <?php foreach ($contacts as $contact): ?>
                         <tr>
-                            <td scope="row"><?= $contact['id'] ?></td>
-                            <td><?= $contact['name'] ?></td>
-                            <td><?= $contact['phone'] ?></td>
+                            <td scope="row" class="col-id"><?= $contact['id'] ?></td>
+                            <td scope="row"><?= $contact['name'] ?></td>
+                            <td scope="row"><?= $contact['phone'] ?></td>
                             <td class="actions">
                                 <a href="#"><i class="fas fa-eye check-icon"></i></a>
                                 <a href="#"><i class="far fa-edit edit-icon"></i></a>
-                                <button type="submit"><i class="fas fa-times delete-icon"></i></button>
+                                <button type="submit" class="delete-btn"><i class="fas fa-times delete-icon"></i></button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <p> TEM CONTATOS</p>
         <?php else: ?>
             <p id="empty-list-text">Ainda não há contatos cadastrados!,<a href="<?= $BASE_URL ?>create.php">CLIQUE AQUI PARA ADICIONAR</a>.</p>
         <?php endif; ?>
