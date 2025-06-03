@@ -92,3 +92,10 @@
 #back-link:hover {
     text-decoration: none !important;
 }
+
+/* CREATE */
+#create-form,
+#edit-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
