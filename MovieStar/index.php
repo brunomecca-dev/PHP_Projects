@@ -1,30 +1,50 @@
 <?php
-require_once("globals.php");
-require_once("db.php");
+  require_once("templates/header.php");
+
+  require_once("dao/MovieDAO.php");
+
+  // DAO dos filmes
+  $movieDao = new MovieDAO($conn, $BASE_URL);
+
+  $latestMovies = $movieDao->getLatestMovies();
+
+  $actionMovies = $movieDao->getMoviesByCategory("Ação");
+
+  $comedyMovies = $movieDao->getMoviesByCategory("Comédia");
+
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieStar</title>
-    <link rel="short icon" href="img/moviestar.ico" />
-    <!--- Bootstrap CSS --->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.6/css/bootstrap.css" integrity="sha512-d5LqZ/jQTKvIEJnGakV9MhG50OFtvfqKPW4/3TkXm0lBlivNYK8mrfRqDsRu0VysLcgB1Y4CaOb2fCkp/wGPXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!--- Font Awesome --->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!--- CSS do Projeto --->
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
-    <h1>Welcome to MovieStar</h1>
-    <i class="far fa-plus-square"></i>
-    <!--- Bootstrap JS --->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.6/js/bootstrap.js" integrity="sha512-prYbThJxUeY3wbEsIacbPmvnxgurr1UT59iUAkkEqTZ5klHQxAEPBUujqFK9X6X2RqunR9GFWiNg7bhEQKRYTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</body>
-
-</html>
+  <div id="main-container" class="container-fluid">
+    <h2 class="section-title">Filmes novos</h2>
+    <p class="section-description">Veja as críticas dos últimos filmes adicionados no MovieStar</p>
+    <div class="movies-container">
+      <?php foreach($latestMovies as $movie): ?>
+        <?php require("templates/movie_card.php"); ?>
+      <?php endforeach; ?>
+      <?php if(count($latestMovies) === 0): ?>
+        <p class="empty-list">Ainda não há filmes cadastrados!</p>
+      <?php endif; ?>
+    </div>
+    <h2 class="section-title">Ação</h2>
+    <p class="section-description">Veja os melhores filmes de ação</p>
+    <div class="movies-container">
+      <?php foreach($actionMovies as $movie): ?>
+        <?php require("templates/movie_card.php"); ?>
+      <?php endforeach; ?>
+      <?php if(count($actionMovies) === 0): ?>
+        <p class="empty-list">Ainda não há filmes de ação cadastrados!</p>
+      <?php endif; ?>
+    </div>
+    <h2 class="section-title">Comédia</h2>
+    <p class="section-description">Veja os melhores filmes de comédia</p>
+    <div class="movies-container">
+      <?php foreach($comedyMovies as $movie): ?>
+        <?php require("templates/movie_card.php"); ?>
+      <?php endforeach; ?>
+      <?php if(count($comedyMovies) === 0): ?>
+        <p class="empty-list">Ainda não há filmes de comédia cadastrados!</p>
+      <?php endif; ?>
+    </div>
+  </div>
+<?php
+  require_once("templates/footer.php");
+?>
