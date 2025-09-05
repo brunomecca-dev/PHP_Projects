@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html, body {
     height: 100%;
 }
@@ -27,4 +28,10 @@ footer {
     align-items: center;
     justify-content: center;
     font-weight: bold;
+=======
+h1 {
+    color:greenyellow;
+    background-color: black;
+    text-align: center;
+>>>>>>> 019037c70efe43c74177bae0e881e7c8b094babf
 }
