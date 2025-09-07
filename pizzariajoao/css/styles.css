@@ -69,6 +69,15 @@ html, body {
   border-color: #000;
 }
 
+.caixa-checkbox {
+        max-height: 200px;
+        overflow-y: auto;
+        border: 1px solid #ced4da;
+        border-radius: 0.375rem; /* Bootstrap padrão */
+        padding: 0.75rem;
+        background-color: #fff;
+    }
+
 /* ALERTA */
 .alert {
   border-radius: 0;
